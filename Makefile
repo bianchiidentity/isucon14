@@ -90,7 +90,7 @@ reload-nginx:
 
 .PHONY: pull-db
 pull-db:
-	sudo cp -R $(DB_PATH)/* ./etc/mysql
+	sudo cp -R $(SERVER_DB_PATH)/* ./etc/mysql
 	sudo chown $(USER) -R ./etc/mysql
 
 .PHONY: deploy-db
