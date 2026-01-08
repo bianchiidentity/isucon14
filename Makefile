@@ -6,7 +6,7 @@ bench: isucon14-bench
 
 NGINX_LOG := ./logs/nginx/access.log
 SERVER_NGINX_LOG := /var/log/nginx/access.log
-SERVER_DB_LOG := /var/log/mysql/mariadb-slow.log
+SERVER_DB_LOG := /var/log/mysql/mysql-slow.log
 
 SERVER_NGINX_PATH:=/etc/nginx
 SERVER_DB_PATH:=/etc/mysql
