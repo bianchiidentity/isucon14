@@ -5,7 +5,7 @@ ssh: isucon14
 bench: isucon14-bench
 
 NGINX_LOG := ./logs/nginx/access.log
-SERVER_NGINX_LOG := ./logs/nginx/access.log
+SERVER_NGINX_LOG := /var/log/nginx/access.log
 
 SERVER_NGINX_PATH:=/etc/nginx
 
@@ -17,12 +17,12 @@ isucon14:
 
 isucon14-bench:
 	docker run --rm -it -v "$(shell pwd):/work" -w /work ubuntu:22.04 \
-		./isucon14/bench run . \
+		./bench run . \
 		--addr $(ISUCON_IP):443 \
 		--target https://isuride.xiv.isucon.net \
 		--payment-url http://127.0.0.1:12346 \
 		--payment-bind-port 12346 \
-		2>&1 | tee isucon14/logs/bench/bench_$$(date +'%Y%m%d_%H%M%S').log
+		2>&1 | tee logs/bench/bench_$$(date +'%Y%m%d_%H%M%S').log
 
 .PHONY: alp
 alp:
