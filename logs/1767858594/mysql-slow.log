@@ -1,0 +1,654 @@
+/usr/sbin/mysqld, Version: 8.0.44-0ubuntu0.24.04.1 ((Ubuntu)). started with:
+Tcp port: 3306  Unix socket: /var/run/mysqld/mysqld.sock
+Time                 Id Command    Argument
+# Time: 2026-01-08T07:46:19.639300Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    17
+# Query_time: 2.034191  Lock_time: 0.000002 Rows_sent: 4  Rows_examined: 524
+use isuride;
+SET timestamp=1767858377;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93HDH25RGSYZTBVM0AV9K';
+# Time: 2026-01-08T07:46:19.810898Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    15
+# Query_time: 2.176064  Lock_time: 0.000003 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858377;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93KV42R9BD9GNB1C69XBT';
+# Time: 2026-01-08T07:46:23.167856Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    22
+# Query_time: 2.009402  Lock_time: 0.000002 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858381;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93EWPC44TQ0FT6F2RF5JX';
+# Time: 2026-01-08T07:46:23.251501Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    23
+# Query_time: 2.087003  Lock_time: 0.000003 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858381;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93HDH25RGSYZTBVM0AV9K';
+# Time: 2026-01-08T07:46:23.256207Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    21
+# Query_time: 2.009058  Lock_time: 0.000003 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858381;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93G6TQKVK2ETFE35YG9CX';
+# Time: 2026-01-08T07:46:26.792081Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    31
+# Query_time: 2.030641  Lock_time: 0.000002 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858384;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93EWPC44TQ0FT6F2RF5JX';
+# Time: 2026-01-08T07:46:26.796828Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    21
+# Query_time: 2.020999  Lock_time: 0.000003 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858384;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93HDH25RGSYZTBVM0AV9K';
+# Time: 2026-01-08T07:46:26.821564Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    27
+# Query_time: 2.047721  Lock_time: 0.000003 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858384;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93JKDSGA6PAWQVQ6T5FFH';
+# Time: 2026-01-08T07:46:26.848247Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    28
+# Query_time: 2.005299  Lock_time: 0.000003 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858384;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93G6TQKVK2ETFE35YG9CX';
+# Time: 2026-01-08T07:46:26.926543Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    25
+# Query_time: 2.092140  Lock_time: 0.000003 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858384;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93KV42R9BD9GNB1C69XBT';
+# Time: 2026-01-08T07:46:30.434837Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    31
+# Query_time: 2.081374  Lock_time: 0.000002 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858388;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93HDH25RGSYZTBVM0AV9K';
+# Time: 2026-01-08T07:46:30.506609Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    38
+# Query_time: 2.088637  Lock_time: 0.000002 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858388;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93KV42R9BD9GNB1C69XBT';
+# Time: 2026-01-08T07:46:30.522259Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    40
+# Query_time: 2.100679  Lock_time: 0.000002 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858388;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93G6TQKVK2ETFE35YG9CX';
+# Time: 2026-01-08T07:46:33.965144Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    38
+# Query_time: 2.018300  Lock_time: 0.000003 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858391;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93EWPC44TQ0FT6F2RF5JX';
+# Time: 2026-01-08T07:46:33.973946Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    46
+# Query_time: 2.006530  Lock_time: 0.000003 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858391;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93HDH25RGSYZTBVM0AV9K';
+# Time: 2026-01-08T07:46:33.998176Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    42
+# Query_time: 2.012266  Lock_time: 0.000002 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858391;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93JKDSGA6PAWQVQ6T5FFH';
+# Time: 2026-01-08T07:46:34.077758Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    36
+# Query_time: 2.036565  Lock_time: 0.000002 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858392;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93KV42R9BD9GNB1C69XBT';
+# Time: 2026-01-08T07:46:37.672844Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    53
+# Query_time: 2.080690  Lock_time: 0.000003 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858395;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93HDH25RGSYZTBVM0AV9K';
+# Time: 2026-01-08T07:46:37.752830Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    52
+# Query_time: 2.144007  Lock_time: 0.000003 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858395;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93JKDSGA6PAWQVQ6T5FFH';
+# Time: 2026-01-08T07:46:41.276309Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    57
+# Query_time: 2.006473  Lock_time: 0.000003 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858399;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93HDH25RGSYZTBVM0AV9K';
+# Time: 2026-01-08T07:46:41.295434Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    58
+# Query_time: 2.030257  Lock_time: 0.000003 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858399;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93EWPC44TQ0FT6F2RF5JX';
+# Time: 2026-01-08T07:46:44.829932Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    64
+# Query_time: 2.015883  Lock_time: 0.000002 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858402;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93EWPC44TQ0FT6F2RF5JX';
+# Time: 2026-01-08T07:46:44.844230Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    61
+# Query_time: 2.037355  Lock_time: 0.000004 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858402;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93HDH25RGSYZTBVM0AV9K';
+# Time: 2026-01-08T07:46:44.969514Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    59
+# Query_time: 2.087929  Lock_time: 0.000002 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858402;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93KV42R9BD9GNB1C69XBT';
+# Time: 2026-01-08T07:46:48.404730Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    64
+# Query_time: 2.008423  Lock_time: 0.000003 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858406;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93JKDSGA6PAWQVQ6T5FFH';
+# Time: 2026-01-08T07:46:48.700622Z
+# User@Host: isucon[isucon] @ localhost [127.0.0.1]  Id:    72
+# Query_time: 2.070577  Lock_time: 0.000002 Rows_sent: 4  Rows_examined: 524
+SET timestamp=1767858406;
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93G6TQKVK2ETFE35YG9CX';
