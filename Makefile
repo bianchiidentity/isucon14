@@ -62,3 +62,8 @@ deploy-nginx:
 .PHONY: pull-nginx
 pull-nginx:
 	sudo cp -R $(SERVER_NGINX_PATH)/* ./etc/nginx
+
+.PHONY: reload-nginx
+reload-nginx:
+	sudo nginx -t
+	sudo systemctl reload nginx
