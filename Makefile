@@ -26,8 +26,16 @@ isucon14-bench:
 
 .PHONY: alp
 alp:
-	alp lstv --file=$(NGINX_LOG)
-
+	@for d in logs/*; do \
+	  log="$$d/access.log"; \
+	  out="$$d/alp.log"; \
+	  if [ -f "$$log" ] && [ ! -f "$$out" ]; then \
+	    echo "alp processing: $$log"; \
+	    alp ltsv --file="$$log" --sort=sum --reverse > "$$out"; \
+	  else \
+	    echo "skip: $$d"; \
+	  fi; \
+	done
 
 # --------- server ---------
 .PHONY: pull-conf
