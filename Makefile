@@ -6,8 +6,11 @@ bench: isucon14-bench
 
 NGINX_LOG := ./logs/nginx/access.log
 SERVER_NGINX_LOG := /var/log/nginx/access.log
+SERVER_DB_LOG := /var/log/mysql/mariadb-slow.log
 
 SERVER_NGINX_PATH:=/etc/nginx
+SERVER_DB_PATH:=/etc/mysql
+
 
 
 # --------- local ---------
@@ -37,17 +40,22 @@ alp:
 	  fi; \
 	done
 
+.PHONY: slow-query
+slow-query:
+	sudo pt-query-digest $(DB_SLOW_LOG)
+
 # --------- server ---------
 .PHONY: pull-conf
-pull-conf: pull-nginx
+pull-conf: pull-nginx pull-db
 
 .PHONY: deploy-conf
-deploy-conf: deploy-nginx
+deploy-conf: deploy-nginx deploy-db
 
 .PHONY: restart
 restart:
 	sudo systemctl daemon-reload
 	sudo systemctl restart nginx
+	sudo systemctl restart mysql
 
 .PHONY: pull-logs
 pull-logs:
@@ -55,6 +63,9 @@ pull-logs:
 	mkdir -p ~/logs/$(when)
 	sudo test -f $(SERVER_NGINX_LOG) && \
 		sudo mv -f $(SERVER_NGINX_LOG) ~/logs/$(when)/ || true
+	sudo test -f $(SERVER_DB_LOG) && \
+		sudo mv -f $(SERVER_DB_LOG) ~/logs/mysql/$(when)/ || echo ""
+
 
 # -----
 
@@ -63,15 +74,29 @@ install-tools:
 	sudo apt update
 	sudo apt upgrade
 
-.PHONY: deploy-nginx
-deploy-nginx:
-	sudo cp -R ./etc/nginx/* $(SERVER_NGINX_PATH)
-
 .PHONY: pull-nginx
 pull-nginx:
 	sudo cp -R $(SERVER_NGINX_PATH)/* ./etc/nginx
+	sudo chown $(USER) -R ./etc/nginx
+
+.PHONY: deploy-nginx
+deploy-nginx:
+	sudo cp -R ./etc/nginx/* $(SERVER_NGINX_PATH)
 
 .PHONY: reload-nginx
 reload-nginx:
 	sudo nginx -t
 	sudo systemctl reload nginx
+
+.PHONY: pull-db
+pull-db:
+	sudo cp -R $(DB_PATH)/* ./etc/mysql
+	sudo chown $(USER) -R ./etc/mysql
+
+.PHONY: deploy-db
+deploy-db:
+	sudo cp -R ./etc/mysql/* $(SERVER_DB_PATH)
+
+.PHONY: reload-db
+reload-db:
+	sudo systemctl restart mysql
