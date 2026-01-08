@@ -40,9 +40,18 @@ alp:
 	  fi; \
 	done
 
-.PHONY: slow-query
-slow-query:
-	sudo pt-query-digest $(DB_SLOW_LOG)
+.PHONY: pt
+pt:
+	@for d in logs/*; do \
+	  slow="$$d/mysql-slow.log"; \
+	  out="$$d/pt-res.txt"; \
+	  if [ -f "$$slow" ] && [ ! -f "$$out" ]; then \
+	    echo "pt-query-digest: $$slow"; \
+	    pt-query-digest "$$slow" > "$$out"; \
+	  else \
+	    echo "skip: $$d"; \
+	  fi; \
+	done
 
 # --------- server ---------
 .PHONY: pull-conf

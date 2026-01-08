@@ -1,0 +1,72 @@
+
+# 70ms user time, 10ms system time, 34.20M rss, 391.85G vsz
+# Current date: Thu Jan  8 16:58:11 2026
+# Hostname: bianchi.local
+# Files: logs/1767858594/mysql-slow.log
+# Overall: 26 total, 1 unique, 0.90 QPS, 1.84x concurrency _______________
+# Time range: 2026-01-08T07:46:19 to 2026-01-08T07:46:48
+# Attribute          total     min     max     avg     95%  stddev  median
+# ============     ======= ======= ======= ======= ======= ======= =======
+# Exec time            53s      2s      2s      2s      2s    56ms      2s
+# Lock time           68us     2us     4us     2us     2us       0     2us
+# Rows sent            104       4       4       4       4       0       4
+# Rows examine      13.30k     524     524     524     524       0     524
+# Query size        29.66k   1.14k   1.14k   1.14k   1.14k       0   1.14k
+
+# Profile
+# Rank Query ID                            Response time  Calls R/Call V/M
+# ==== =================================== ============== ===== ====== ===
+#    1 0x25D034CF58223D3C0432925663366D80  53.3385 100.0%    26 2.0515  0.00 SELECT chairs chair_locations
+
+# Query 1: 0.90 QPS, 1.84x concurrency, ID 0x25D034CF58223D3C0432925663366D80 at byte 1564
+# This item is included in the report because it matches --limit.
+# Scores: V/M = 0.00
+# Time range: 2026-01-08T07:46:19 to 2026-01-08T07:46:48
+# Attribute    pct   total     min     max     avg     95%  stddev  median
+# ============ === ======= ======= ======= ======= ======= ======= =======
+# Count        100      26
+# Exec time    100     53s      2s      2s      2s      2s    56ms      2s
+# Lock time    100    68us     2us     4us     2us     2us       0     2us
+# Rows sent    100     104       4       4       4       4       0       4
+# Rows examine 100  13.30k     524     524     524     524       0     524
+# Query size   100  29.66k   1.14k   1.14k   1.14k   1.14k       0   1.14k
+# String:
+# Databases    isuride
+# Hosts        localhost
+# Users        isucon
+# Query_time distribution
+#   1us
+#  10us
+# 100us
+#   1ms
+#  10ms
+# 100ms
+#    1s  ################################################################
+#  10s+
+# Tables
+#    SHOW TABLE STATUS FROM `isuride` LIKE 'chairs'\G
+#    SHOW CREATE TABLE `isuride`.`chairs`\G
+#    SHOW TABLE STATUS FROM `isuride` LIKE 'chair_locations'\G
+#    SHOW CREATE TABLE `isuride`.`chair_locations`\G
+# EXPLAIN /*!50100 PARTITIONS*/
+/* /home/isucon/webapp/perl/lib/Kossy/Isuride/Handler/Owner.pm line 227 */        SELECT id,
+               owner_id,
+               name,
+               access_token,
+               model,
+               is_active,
+               created_at,
+               updated_at,
+               IFNULL(total_distance, 0) AS total_distance,
+               total_distance_updated_at
+        FROM chairs
+               LEFT JOIN (SELECT chair_id,
+                                  SUM(IFNULL(distance, 0)) AS total_distance,
+                                  MAX(created_at)          AS total_distance_updated_at
+                           FROM (SELECT chair_id,
+                                        created_at,
+                                        ABS(latitude - LAG(latitude) OVER (PARTITION BY chair_id ORDER BY created_at)) +
+                                        ABS(longitude - LAG(longitude) OVER (PARTITION BY chair_id ORDER BY created_at)) AS distance
+                                 FROM chair_locations) tmp
+                           GROUP BY chair_id) distance_table ON distance_table.chair_id = chairs.id
+        WHERE owner_id = '01KEE93KV42R9BD9GNB1C69XBT'\G
