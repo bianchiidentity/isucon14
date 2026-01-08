@@ -64,7 +64,7 @@ pull-logs:
 	sudo test -f $(SERVER_NGINX_LOG) && \
 		sudo mv -f $(SERVER_NGINX_LOG) ~/logs/$(when)/ || true
 	sudo test -f $(SERVER_DB_LOG) && \
-		sudo mv -f $(SERVER_DB_LOG) ~/logs/mysql/$(when)/ || echo ""
+		sudo mv -f $(SERVER_DB_LOG) ~/logs/$(when)/ || true
 
 
 # -----
